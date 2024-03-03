@@ -1,1 +1,145 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://dogination.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dogination.com/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2023-06-05T15:29:16+07:00</updated><id>https://dogination.com/feed.xml</id><title type="html">Dogination</title><subtitle>Hi, this is my personal blog, I&apos;ll post what I find interesting or what I wanna share. </subtitle><author><name>Dogination</name><email>your-email@email.com</email></author><entry><title type="html">Welcome to Dogination</title><link href="https://dogination.com/welcome-to-dogination/" rel="alternate" type="text/html" title="Welcome to Dogination" /><published>2023-06-04T01:00:00+07:00</published><updated>2023-06-04T01:00:00+07:00</updated><id>https://dogination.com/welcome-to-dogination</id><content type="html" xml:base="https://dogination.com/welcome-to-dogination/"><![CDATA[<p>Hello, welcome to my first post.</p>]]></content><author><name>Dogination</name><email>your-email@email.com</email></author><summary type="html"><![CDATA[Hello, welcome to my first post.]]></summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://dogination.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dogination.com/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2024-03-03T09:29:12+07:00</updated><id>https://dogination.com/feed.xml</id><title type="html">Dogination</title><subtitle>Hi, this is my personal blog, I&apos;ll post what I find interesting or what I wanna share. </subtitle><author><name>Dogination</name><email>your-email@email.com</email></author><entry><title type="html">Setting up a server</title><link href="https://dogination.com/setting-up-a-server/" rel="alternate" type="text/html" title="Setting up a server" /><published>2024-03-03T01:00:00+07:00</published><updated>2024-03-03T01:00:00+07:00</updated><id>https://dogination.com/setting-up-a-server</id><content type="html" xml:base="https://dogination.com/setting-up-a-server/"><![CDATA[<p><img src="/setting-up-a-server/server.jpeg" /></p>
+
+<h2 id="about">About</h2>
+<p>This is just a simple guide on how I setup basic software on a server.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>I would pick <a href="https://www.debian.org/">debian</a> as it is most supported.</p>
+
+<p>Download and flash correct architecture iso to flash drive or copy to <a href="https://www.ventoy.net/en/index.html">Ventoy</a> drive or as I do <a href="https://netboot.xyz/">netboot.xyz</a> on ventoy, easily booting into diffrent up to date operating systems using iPXE (internet required).</p>
+
+<p>Plug in flash drive and you would probably need to connect display, keyboard and/or mouse (depeding cli or gui install) to the server.</p>
+
+<p>Turn on server and boot into flash drive into <a href="https://www.debian.org/">debian</a> iso</p>
+
+<h3 id="os-installation">OS Installation</h3>
+
+<h4 id="pick-graphic-install-or-install-cli">Pick Graphic install or Install (cli)</h4>
+
+<h4 id="pick-your-language">Pick your Language</h4>
+<p>Select your location (Country where you live for time zone)</p>
+
+<h4 id="configuring-the-keyboard">Configuring the keyboard</h4>
+<p>Keymap to use (keyboard layout)</p>
+
+<h4 id="configuring-the-network">Configuring the network</h4>
+<p>Hostname for system (identify the system to network)
+Domain name (I keep blank)</p>
+
+<h4 id="set-up-users-and-passwords">Set up users and passwords</h4>
+<p>Root password (I keep blank to disable it and use user “sudo” command)
+Full name for the new user (I keep blank)
+Username for your account (I enter user)
+Choose a password for the new user (enter strong password)</p>
+
+<h4 id="configure-the-clock">Configure the clock</h4>
+
+<h4 id="partition-disks">Partition disks</h4>
+<p>Partitioning method (I pick “guided - use entire disk” but pick for your use case)
+Select disk to partition (pick disk to install debian)
+Partition scheme (I pick All files in one partition)
+Click partitioning and write changes to disk and yes to Write the changes to disks</p>
+
+<h4 id="configuring-the-packages-manager">Configuring the packages manager</h4>
+<p>Debian archive mirror country: (pick the country where the server in for the fastest download speed for package manager)
+Debian archive mirror: I would pick the recommended “deb.debian.org”
+HTTP proxy information (blank for none): (I just keep blank)</p>
+
+<h4 id="configuring-popularity-contest">Configuring popularity-contest</h4>
+<p>I pick no</p>
+
+<h4 id="software-selection">Software selection</h4>
+<p>Choose software to install: (I only pick “standard system utilities” and “SSH server”)</p>
+
+<h4 id="finish-the-installation">Finish the Installation</h4>
+<p>I press Continue to reboot into newly installed os</p>
+
+<h4 id="can-remove-flash-drive-when-servers-off">Can remove flash drive when server’s off</h4>
+
+<h3 id="software-installation">Software Installation</h3>
+
+<p>Now your finished installing you want to get the ip address of the server you can do this by through your router dashboard or by</p>
+
+<p>Login using the set username (I picked user so enter user)
+Password (enter your set password)
+Then entering the command below which will show your ip under your network adapter under inet</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ip a
+</code></pre></div></div>
+
+<p>You can logout now by entering</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">exit</span>
+</code></pre></div></div>
+
+<p>Now you got your server ip you can now disconnect your monitor, keyboard and mouse from the server as we will use ssh to manage our server.</p>
+
+<p>Now open a terminal on another computer that is on the same network as your server and enter</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh user@[server-ip]
+</code></pre></div></div>
+
+<p>click yes to fingerprint
+and enter the password you set
+now your in</p>
+
+<p>I would update the system</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt update
+<span class="nv">$ </span><span class="nb">sudo </span>apt upgrade
+<span class="nv">$ </span><span class="nb">sudo </span>apt full-upgrade
+<span class="nv">$ </span><span class="nb">sudo </span>apt autoremove
+<span class="nv">$ </span><span class="nb">sudo </span>reboot
+</code></pre></div></div>
+<p>Log back in
+Then install basic tools to help me manage the server</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>htop ncdu ranger neovim
+</code></pre></div></div>
+
+<p>Install docker</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-sSL</span> https://get.docker.com | sh
+<span class="nv">$ </span><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker <span class="nv">$USER</span>
+<span class="nv">$ </span><span class="nb">logout</span>
+</code></pre></div></div>
+<p>Log back in
+To test if docker is running correctly</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run hello-world
+</code></pre></div></div>
+
+<h3 id="automatic-updates"><a href="https://linuxiac.com/how-to-set-up-automatic-updates-on-debian/">Automatic Updates</a></h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>unattended-upgrades
+<span class="nv">$ </span><span class="nb">sudo </span>nvim /etc/apt/apt.conf.d/50unattended-upgrades
+</code></pre></div></div>
+
+<h4 id="uncomment-these-line-by-removing--from-the-start-of-the-lines">Uncomment these line by removing // from the start of the lines</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"origin=Debian,codename=${distro_codename}-updates";
+"origin=Debian,codename=${distro_codename}-proposed-updates";
+"origin=Debian,codename=${distro_codename},label=Debian";
+"origin=Debian,codename=${distro_codename},label=Debian-Security";
+"origin=Debian,codename=${distro_codename}-security,label=Debian-Security";
+</code></pre></div></div>
+
+<h4 id="autoremove-unused-depdencies">Autoremove unused depdencies</h4>
+
+<p>Uncomment and change from “false” to “true”</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//Unattended-Upgrade::Remove-Unused-Dependencies "false";
+</code></pre></div></div>
+
+<p>Save and exit</p>
+
+<h2 id="enabling-automatic-update">Enabling automatic update</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>dpkg-reconfigure <span class="nt">--priority</span><span class="o">=</span>low unattended-upgrades
+</code></pre></div></div>
+
+<p>Enter on Yes</p>
+
+<h2 id="check-if-unattended-upgrades-is-running">Check if unattended-upgrades is running</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>systemctl status unattended-upgrades.service
+</code></pre></div></div>
+
+<p>Beside Active: active (running) should show</p>]]></content><author><name>Dogination</name><email>your-email@email.com</email></author><category term="server" /><category term="software" /><summary type="html"><![CDATA[This is just a simple guide on how I setup basic software on a server]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://dogination.com/setting-up-a-server/server.jpeg" /><media:content medium="image" url="https://dogination.com/setting-up-a-server/server.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Welcome to Dogination</title><link href="https://dogination.com/welcome-to-dogination/" rel="alternate" type="text/html" title="Welcome to Dogination" /><published>2023-06-04T01:00:00+07:00</published><updated>2023-06-04T01:00:00+07:00</updated><id>https://dogination.com/welcome-to-dogination</id><content type="html" xml:base="https://dogination.com/welcome-to-dogination/"><![CDATA[<p>Hello, welcome to my first post.</p>]]></content><author><name>Dogination</name><email>your-email@email.com</email></author><summary type="html"><![CDATA[Hello, welcome to my first post.]]></summary></entry></feed>
