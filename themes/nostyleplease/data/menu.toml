@@ -1,0 +1,66 @@
+[[entries]]
+title = "info"
+
+  [[entries.entries]]
+  title = "I made this for fun, where I can share stuff to the world and learn more into domain, website, etc."
+
+  [[entries.entries]]
+  title = "I'm into tech obviously :3"
+
+ [[entries]]
+ title = "interests:"
+
+  [[entries.entries]]
+  title = "open-source, privacy, tech, linux, self-hosting, etc."
+
+  [[entries.entries]]
+  title = "phone"
+
+    [[entries.entries.entries]]
+    title = "Old iPhone 5s"
+    url = "posts/daily-driving-iphone5s/dailyiphone5sin2025/"
+
+    [[entries.entries.entries]]
+    title = "Linux phone (OnePlus 6t)"
+    url = "posts/linux-phone/linuxphone/"
+
+  [[entries.entries]]
+  title = "homelab"
+
+    [[entries.entries.entries]]
+    title = "Server setup"
+    url = "posts/setting-up-a-server/2024-03-03-setting-up-a-server/"
+
+
+
+[[entries]]
+title = "all posts"
+
+  [entries.post_list]
+  limit = 5
+  show_more = true
+  show_more_text = "See archive..."
+  show_more_url = "posts"
+
+#[[entries]]
+#title = "posts by category"
+#
+#  [entries.post_list]
+#  section = "posts"
+#  show_more = true
+#  show_more_text = "See more posts..."
+#  show_more_url = "posts"
+
+[[entries]]
+title = "rss"
+url = "index.xml"
+
+[[entries]]
+title = "Recent articles I enjoyed"
+[[entries.entries]]
+  title = "https://blogfeeds.net/"
+  url = "https://blogfeeds.net/"
+[[entries.entries]]
+  title = "https://www.socialcooling.com/"
+  url = "https://www.socialcooling.com/"
+  

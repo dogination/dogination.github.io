@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="
+About
+This is just a simple guide on how I setup basic software on a server.
+Prerequisites
+I would pick debian as it is most supported.
+Download and flash correct architecture iso to flash drive or copy to Ventoy drive or as I do netboot.xyz on ventoy, easily booting into diffrent up to date operating systems using iPXE (internet required).
+Plug in flash drive and you would probably need to connect display, keyboard and/or mouse (depeding cli or gui install) to the server.">  
+
+  <title>
+    
+      Setting up a server
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.51652302d3a998bf7887aed5c2cf89141bbebdf45a2c8f87b0717a3cf4f51c4e53c694c328fb1de78c3a625a1c01f80745bf1f2f42c040647a245cbbb6c2d1d7.css" integrity="sha512-UWUjAtOpmL94h67Vws&#43;JFBu&#43;vfRaLI&#43;HsHF6PPT1HE5TxpTDKPsd54w6YlocAfgHRb8fL0LAQGR6JFy7tsLR1w==" />
+  
+</head>
+<body a="dark">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+                <div class="post-meta">
+                    <a href="/">..</a>
+
+                    <p>
+                        <time datetime="2024-03-03 00:00:00 &#43;0000 UTC">
+                            2024-03-03
+                        </time>
+                    </p>
+                </div>
+
+<article>
+    <h1>Setting up a server</h1>
+
+    
+
+    <p><img src="/server.jpeg" alt="Image alt"></p>
+<h2 id="about">About</h2>
+<p>This is just a simple guide on how I setup basic software on a server.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>I would pick <a href="https://www.debian.org/">debian</a> as it is most supported.</p>
+<p>Download and flash correct architecture iso to flash drive or copy to <a href="https://www.ventoy.net/en/index.html">Ventoy</a> drive or as I do <a href="https://netboot.xyz/">netboot.xyz</a> on ventoy, easily booting into diffrent up to date operating systems using iPXE (internet required).</p>
+<p>Plug in flash drive and you would probably need to connect display, keyboard and/or mouse (depeding cli or gui install) to the server.</p>
+<p>Turn on server and boot into flash drive into <a href="https://www.debian.org/">debian</a> iso</p>
+<h3 id="os-installation">OS Installation</h3>
+<h4 id="pick-graphic-install-or-install-cli">Pick Graphic install or Install (cli)</h4>
+<h4 id="pick-your-language">Pick your Language</h4>
+<p>Select your location (Country where you live for time zone)</p>
+<h4 id="configuring-the-keyboard">Configuring the keyboard</h4>
+<p>Keymap to use (keyboard layout)</p>
+<h4 id="configuring-the-network">Configuring the network</h4>
+<p>Hostname for system (identify the system to network)
+Domain name (I keep blank)</p>
+<h4 id="set-up-users-and-passwords">Set up users and passwords</h4>
+<p>Root password (I keep blank to disable it and use user &ldquo;sudo&rdquo; command)
+Full name for the new user (I keep blank)
+Username for your account (I enter user)
+Choose a password for the new user (enter strong password)</p>
+<h4 id="configure-the-clock">Configure the clock</h4>
+<h4 id="partition-disks">Partition disks</h4>
+<p>Partitioning method (I pick &ldquo;guided - use entire disk&rdquo; but pick for your use case)
+Select disk to partition (pick disk to install debian)
+Partition scheme (I pick All files in one partition)
+Click partitioning and write changes to disk and yes to Write the changes to disks</p>
+<h4 id="configuring-the-packages-manager">Configuring the packages manager</h4>
+<p>Debian archive mirror country: (pick the country where the server in for the fastest download speed for package manager)
+Debian archive mirror: I would pick the recommended &ldquo;deb.debian.org&rdquo;
+HTTP proxy information (blank for none): (I just keep blank)</p>
+<h4 id="configuring-popularity-contest">Configuring popularity-contest</h4>
+<p>I pick no</p>
+<h4 id="software-selection">Software selection</h4>
+<p>Choose software to install: (I only pick &ldquo;standard system utilities&rdquo; and &ldquo;SSH server&rdquo;)</p>
+<h4 id="finish-the-installation">Finish the Installation</h4>
+<p>I press Continue to reboot into newly installed os</p>
+<h4 id="can-remove-flash-drive-when-servers-off">Can remove flash drive when server&rsquo;s off</h4>
+<h3 id="software-installation">Software Installation</h3>
+<p>Now your finished installing you want to get the ip address of the server you can do this by through your router dashboard or by</p>
+<p>Login using the set username (I picked user so enter user)
+Password (enter your set password)
+Then entering the command below which will show your ip under your network adapter under inet</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ip a
+</span></span></code></pre></div><p>You can logout now by entering</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ exit
+</span></span></code></pre></div><p>Now you got your server ip you can now disconnect your monitor, keyboard and mouse from the server as we will use ssh to manage our server.</p>
+<p>Now open a terminal on another computer that is on the same network as your server and enter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh user@<span style="color:#f92672">[</span>server-ip<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>click yes to fingerprint
+and enter the password you set
+now your in</p>
+<p>I would update the system</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt update
+</span></span><span style="display:flex;"><span>$ sudo apt upgrade
+</span></span><span style="display:flex;"><span>$ sudo apt full-upgrade
+</span></span><span style="display:flex;"><span>$ sudo apt autoremove
+</span></span><span style="display:flex;"><span>$ sudo reboot
+</span></span></code></pre></div><p>Log back in
+Then install basic tools to help me manage the server</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install htop ncdu ranger neovim
+</span></span></code></pre></div><p>Install docker</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -sSL https://get.docker.com | sh
+</span></span><span style="display:flex;"><span>$ sudo usermod -aG docker $USER
+</span></span><span style="display:flex;"><span>$ logout
+</span></span></code></pre></div><p>Log back in
+To test if docker is running correctly</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker run hello-world
+</span></span></code></pre></div><h3 id="automatic-updates"><a href="https://linuxiac.com/how-to-set-up-automatic-updates-on-debian/">Automatic Updates</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install unattended-upgrades
+</span></span><span style="display:flex;"><span>$ sudo nvim /etc/apt/apt.conf.d/50unattended-upgrades
+</span></span></code></pre></div><h4 id="uncomment-these-line-by-removing--from-the-start-of-the-lines">Uncomment these line by removing // from the start of the lines</h4>
+<pre tabindex="0"><code>&#34;origin=Debian,codename=${distro_codename}-updates&#34;;
+&#34;origin=Debian,codename=${distro_codename}-proposed-updates&#34;;
+&#34;origin=Debian,codename=${distro_codename},label=Debian&#34;;
+&#34;origin=Debian,codename=${distro_codename},label=Debian-Security&#34;;
+&#34;origin=Debian,codename=${distro_codename}-security,label=Debian-Security&#34;;
+</code></pre><h4 id="autoremove-unused-depdencies">Autoremove unused depdencies</h4>
+<p>Uncomment and change from &ldquo;false&rdquo; to &ldquo;true&rdquo;</p>
+<pre tabindex="0"><code>//Unattended-Upgrade::Remove-Unused-Dependencies &#34;false&#34;;
+</code></pre><p>Save and exit</p>
+<h2 id="enabling-automatic-update">Enabling automatic update</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dpkg-reconfigure --priority<span style="color:#f92672">=</span>low unattended-upgrades
+</span></span></code></pre></div><p>Enter on Yes</p>
+<h2 id="check-if-unattended-upgrades-is-running">Check if unattended-upgrades is running</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo systemctl status unattended-upgrades.service
+</span></span></code></pre></div><p>Beside Active: active (running) should show</p>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>

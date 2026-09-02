@@ -1,0 +1,4 @@
+baseURL = 'https://dogination.com/'
+languageCode = 'en-us'
+title = 'Dogination'
+theme = 'nostyleplease'
